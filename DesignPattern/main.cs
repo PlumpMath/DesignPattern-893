@@ -20,13 +20,6 @@ namespace DesignPattern
 			IPrint printer = new PrintBsnner("Hello");
 			printer.PrintWeak();
 			printer.PrintStrong();
-
-			Console.WriteLine(ConfigurationManager.AppSettings.Count);
-
-			Configuration config = ConfigurationManager.OpenExeConfiguration("DesignPattern.exe");
-			Console.WriteLine (config.HasFile);
-			AppSettingsSection setting = config.AppSettings;
-			Console.WriteLine (setting.SectionInformation.GetRawXml());
 		}
 	}
 }
