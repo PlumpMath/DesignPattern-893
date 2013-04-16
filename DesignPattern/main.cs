@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DesignPattern;
 namespace DesignPattern
 {
 	using DesignPattern.Adapter;
@@ -17,9 +17,9 @@ namespace DesignPattern
 		/// <param name="args"></param>
 		static void Main(string[] args)
 		{
-			IPrint printer = new PrintBsnner("Hello");
-			printer.PrintWeak();
-			printer.PrintStrong();
+			IPrint printer = new PrintBsnner ("Hello");
+			printer.PrintWeak ();
+			printer.PrintStrong ();
 		}
 	}
 }
