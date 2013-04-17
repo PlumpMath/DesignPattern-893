@@ -109,3 +109,5 @@ UpgradeLog*.XML
 
 *.userprefs
 test-results/
+
+.DS_Store
