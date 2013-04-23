@@ -80,4 +80,32 @@ namespace DesignPattern.Adapter
 			banner.ShowWithAster();
 		}
 	}
+
+	public interface IFileIO
+	{
+		void ReadFromFile(string fileName);
+		void WriteToFile(string fileName);
+		void SetValue(string key,string value);
+		string GetValue(string key);
+	}
+
+	public class FileProperties : IFileIO
+	{
+		public void ReadFromFile(string fileName)
+		{
+		}
+
+		public void WriteToFile(string fileName)
+		{
+		}
+
+		public void SetValue(string key, string value)
+		{
+		}
+
+		public string GetValue(string key)
+		{
+			return "";
+		}
+	}
 }
