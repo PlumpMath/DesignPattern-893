@@ -21,7 +21,7 @@ Global
 		{8AAAD53D-2DDA-4955-8EE4-18B0571778F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TryingProject\TryingProject.csproj
+		StartupItem = DesignPattern\DesignPattern.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
