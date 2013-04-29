@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesignPattern;
+
 namespace DesignPattern
 {
 	using DesignPattern.Adapter;
@@ -81,6 +83,9 @@ namespace DesignPattern.Adapter
 		}
 	}
 
+	/// <summary>
+	/// Interface of file IO.
+	/// </summary>
 	public interface IFileIO
 	{
 		void ReadFromFile(string fileName);
@@ -91,8 +96,30 @@ namespace DesignPattern.Adapter
 
 	public class FileProperties : IFileIO
 	{
+		private Dictionary<string, string> contents;
+
+		public FileProperties(){
+			this.contents = new Dictionary<string, string> ();
+		}
+
 		public void ReadFromFile(string fileName)
 		{
+			if (!File.Exists (fileName))
+			{
+				Console.WriteLine("file is not exists.");
+				return;
+			}
+
+			string[] lines = File.ReadAllLines (fileName);
+
+			foreach (var item in lines) {
+				int separatorIndex = item.IndexOf('=');
+				if(separatorIndex > 0){
+					string key = item.Substring(0,separatorIndex);
+					string value = item.Substring(separatorIndex+1);
+					contents.Add(key,value);
+				}
+			}
 		}
 
 		public void WriteToFile(string fileName)
