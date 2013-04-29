@@ -128,11 +128,22 @@ namespace DesignPattern.Adapter
 
 		public void SetValue(string key, string value)
 		{
+			this.contents.Add(key, value);
 		}
 
 		public string GetValue(string key)
 		{
-			return "";
+			var value = string.Empty;
+
+			if (contents.TryGetValue (key,out value)) 
+			{
+				return value;
+			} 
+			else
+			{
+				Console.WriteLine("the key does not exist");
+				return "";
+			}
 		}
 	}
 }
