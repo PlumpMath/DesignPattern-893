@@ -14,14 +14,23 @@ namespace DesignPatternTest.Adapter
 			Assert.That (_sut.GetValue(key), Is.EqualTo (expected));
 		}
 
-		[TestCase]
-		public void WhenSetValueThenGetValueReturnsValue(){
+		[TestCase("key1","hoge")]
+		[TestCase("","")]
+		public void WhenSetValueThenGetValueReturnsValue(string key,string value){
 			var _sut = new FileProperties ();
-			_sut.SetValue ("key1", "hoge");
-			Assert.That (_sut.GetValue ("key1"), Is.EqualTo ("hoge"));
+			_sut.SetValue (key, value);
+			Assert.That (_sut.GetValue (key), Is.EqualTo (value));
 		}
 
-		[TestCase,Ignore]
+		[TestCase]
+		public void WriteFileAndGetItsValue(){
+			var _sut = new FileProperties ();
+			_sut.SetValue ("key1", "hoge");
+			_sut.WriteToFile ("sample_actual.txt");
+			FileAssert.AreEqual ("sample.txt", "sample_actual.txt");
+		}
+
+		[TestCase]
 		public void ReadFromFileGenerateEmptyDictionaryIfFileNotExists(){
 			var _sut = new FileProperties ();
 			_sut.ReadFromFile ("dummy.txt");

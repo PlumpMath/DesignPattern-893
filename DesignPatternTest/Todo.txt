@@ -1,4 +1,5 @@
 Todo to pass TestCase("key1", "hoge")
-[] GetValue's implementation.
-[] SetValue's implementation.
+[x] GetValue's implementation.
+[x] SetValue's implementation.
+[] WriteToFile's implementation.
 [] ReadFromFile's implementation.
