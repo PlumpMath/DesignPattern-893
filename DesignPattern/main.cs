@@ -124,6 +124,12 @@ namespace DesignPattern.Adapter
 
 		public void WriteToFile(string fileName)
 		{
+			var outPutText = string.Empty;
+			
+			foreach (var item in contents) {
+				outPutText = string.Format ("{0}={1}¥n", item.Key,item.Value);
+			}
+			File.WriteAllText (fileName, outPutText);
 		}
 
 		public void SetValue(string key, string value)
