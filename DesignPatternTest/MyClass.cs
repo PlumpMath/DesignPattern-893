@@ -27,7 +27,7 @@ namespace DesignPatternTest.Adapter
 			var _sut = new FileProperties ();
 			_sut.SetValue ("key1", "hoge");
 			_sut.WriteToFile ("sample_actual.txt");
-			FileAssert.AreEqual ("sample.txt", "sample_actual.txt");
+			FileAssert.AreEqual ("../../TestData/sample_expected.txt", "sample_actual.txt");
 		}
 
 		[TestCase]
@@ -35,6 +35,10 @@ namespace DesignPatternTest.Adapter
 			var _sut = new FileProperties ();
 			_sut.ReadFromFile ("dummy.txt");
 			Assert.That (_sut.GetValue (""), Is.EqualTo (""));
+		}
+		[Test]
+		public void Tes(){
+
 		}
 	}
 }

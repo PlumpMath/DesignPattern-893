@@ -22,7 +22,7 @@ namespace DesignPattern
 			IPrint printer = new PrintBsnner ("Hello");
 			printer.PrintWeak ();
 			printer.PrintStrong ();
-		}
+}
 	}
 }
 
@@ -124,12 +124,12 @@ namespace DesignPattern.Adapter
 
 		public void WriteToFile(string fileName)
 		{
-			var outPutText = string.Empty;
+			var outPutText = new List<string>();
 			
 			foreach (var item in contents) {
-				outPutText = string.Format ("{0}={1}¥n", item.Key,item.Value);
+				outPutText.Add(string.Format ("{0}={1}", item.Key,item.Value));
 			}
-			File.WriteAllText (fileName, outPutText);
+			File.WriteAllLines (fileName, outPutText.ToArray());
 		}
 
 		public void SetValue(string key, string value)
