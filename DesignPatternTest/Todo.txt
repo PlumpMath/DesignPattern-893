@@ -1,5 +1,6 @@
 Todo to pass TestCase("key1", "hoge")
 [x] GetValue's implementation.
 [x] SetValue's implementation.
-[] WriteToFile's implementation.
-[] ReadFromFile's implementation.
+[x] WriteToFile's implementation.
+[x] ReadFromFile's implementation.
+[] use FileIO interface in Main().
