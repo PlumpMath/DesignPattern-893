@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DesignPattern;
 
 namespace DesignPattern
 {
@@ -22,13 +17,12 @@ namespace DesignPattern
 			IPrint printer = new PrintBsnner ("Hello");
 			printer.PrintWeak ();
 			printer.PrintStrong ();
-}
+		}
 	}
 }
 
 namespace DesignPattern.Adapter
 {
-
 	/// <summary>
 	/// Adaptee
 	/// </summary>
