@@ -1,25 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
-
-namespace DesignPattern
-{
-	using DesignPattern.Adapter;
-
-	class DesignPatternMain
-	{
-		/// <summary>
-		/// Client
-		/// </summary>
-		/// <param name="args"></param>
-		static void Main(string[] args)
-		{
-			IPrint printer = new PrintBsnner ("Hello");
-			printer.PrintWeak ();
-			printer.PrintStrong ();
-		}
-	}
-}
 
 namespace DesignPattern.Adapter
 {
@@ -29,7 +10,7 @@ namespace DesignPattern.Adapter
 	public class Banner
 	{
 		private String str;
-		
+
 		public Banner(String str)
 		{
 			this.str = str;
@@ -45,7 +26,7 @@ namespace DesignPattern.Adapter
 			Console.WriteLine("*" + str + "*");
 		}
 	}
-
+		
 	/// <summary>
 	/// Target
 	/// </summary>
@@ -54,15 +35,14 @@ namespace DesignPattern.Adapter
 		void PrintWeak();
 		void PrintStrong();
 	}
-
+		
 	/// <summary>
 	/// Adapter
 	/// </summary>
 	public class PrintBsnner : IPrint
 	{
 		private Banner banner;
-	
-		
+			
 		public PrintBsnner(String str)
 		{
 			this.banner = new Banner(str);
@@ -76,7 +56,7 @@ namespace DesignPattern.Adapter
 			banner.ShowWithAster();
 		}
 	}
-
+		
 	/// <summary>
 	/// Interface of file IO.
 	/// </summary>
@@ -87,7 +67,7 @@ namespace DesignPattern.Adapter
 		void SetValue(string key,string value);
 		string GetValue(string key);
 	}
-
+		
 	public class FileProperties : IFileIO
 	{
 		private Dictionary<string, string> contents;
@@ -119,7 +99,7 @@ namespace DesignPattern.Adapter
 		public void WriteToFile(string fileName)
 		{
 			var outPutText = new List<string>();
-			
+
 			foreach (var item in contents) {
 				outPutText.Add(string.Format ("{0}={1}", item.Key,item.Value));
 			}
@@ -134,7 +114,7 @@ namespace DesignPattern.Adapter
 		public string GetValue(string key)
 		{
 			var value = string.Empty;
-
+				
 			if (contents.TryGetValue (key,out value)) 
 			{
 				return value;
@@ -147,3 +127,4 @@ namespace DesignPattern.Adapter
 		}
 	}
 }
+
