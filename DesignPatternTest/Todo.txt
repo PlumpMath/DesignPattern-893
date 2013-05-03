@@ -1,4 +1,3 @@
-Todo to pass TestCase("key1", "hoge")
 [x] GetValue's implementation.
 [x] SetValue's implementation.
 [x] WriteToFile's implementation.

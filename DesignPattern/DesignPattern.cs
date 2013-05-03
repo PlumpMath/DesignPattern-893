@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace DesignPattern
 {
@@ -14,7 +12,7 @@ namespace DesignPattern
 		/// <param name="args"></param>
 		static void Main(string[] args)
 		{
-			IPrint printer = new PrintBsnner ("Hello");
+			IPrint printer = new PrintBanner ("Hello");
 			printer.PrintWeak ();
 			printer.PrintStrong ();
 
