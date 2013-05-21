@@ -3,3 +3,9 @@
 [x] WriteToFile's implementation.
 [x] ReadFromFile's implementation.
 [x] use FileIO interface in Main().
+
+
+Template Method
+[] 
+[] 
+[] 
