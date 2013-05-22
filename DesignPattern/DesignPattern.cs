@@ -39,8 +39,6 @@ namespace DesignPattern
 			aDisp1.Display ();
 			aDisp2.Display ();
 			aDisp3.Display ();
-
-
 		}
 	}
 }
