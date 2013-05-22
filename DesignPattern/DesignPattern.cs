@@ -33,12 +33,14 @@ namespace DesignPattern
 */
 
 			/*** Template Method Pattern ***/
-			AbstracDisplay aDisp1 = new CharDisplay ('H');
-			AbstracDisplay aDisp2 = new StringDisplay ("Hello, CSharp!");
-			AbstracDisplay aDisp3 = new StringDisplay ("Hello, Template Method.");
+			AbstractDisplay aDisp1 = new CharDisplay ('H');
+			AbstractDisplay aDisp2 = new StringDisplay ("Hello, CSharp!");
+			AbstractDisplay aDisp3 = new StringDisplay ("Hello, Template Method.");
 			aDisp1.Display ();
 			aDisp2.Display ();
 			aDisp3.Display ();
+
+
 		}
 	}
 }

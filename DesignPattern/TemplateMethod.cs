@@ -3,15 +3,15 @@ using System.Text;
 
 namespace DesignPattern.TemplateMethod
 {
-	public abstract class AbstracDisplay
+	public abstract class AbstractDisplay
 	{
-		public AbstracDisplay ()
+		public AbstractDisplay ()
 		{
 		}
 		
-		public abstract void Open();
-		public abstract void Print();
-		public abstract void Close();
+		protected abstract void Open();
+		protected abstract void Print();
+		protected abstract void Close();
 
 		public void Display()
 		{
@@ -25,7 +25,7 @@ namespace DesignPattern.TemplateMethod
 		}
 	}
 
-	public class CharDisplay : AbstracDisplay
+	public class CharDisplay : AbstractDisplay
 	{
 		private char ch;
 
@@ -34,23 +34,23 @@ namespace DesignPattern.TemplateMethod
 			this.ch = ch;
 		}
 
-		public override void Open()
+		protected override void Open()
 		{
 			Console.Write ("<<");
 		}
 
-		public override void Print()
+		protected override void Print()
 		{
 			Console.Write (this.ch);
 		}
 
-		public override void Close()
+		protected override void Close()
 		{
 			Console.WriteLine (">>");
 		}
 	}
 
-	public class StringDisplay : AbstracDisplay
+	public class StringDisplay : AbstractDisplay
 	{
 		private string str;
 		private int width;
@@ -61,15 +61,15 @@ namespace DesignPattern.TemplateMethod
 			this.width = Encoding.GetEncoding ("Shift_JIS").GetBytes (str).Length;
 		}
 		
-		public override void Open()
+		protected override void Open()
 		{
 			PrintLine ();
 		}
-		public override void Print()
+		protected override void Print()
 		{
 			Console.WriteLine ("|" + this.str + "|");
 		}
-		public override void Close()
+		protected override void Close()
 		{
 			PrintLine ();
 		}
