@@ -47,6 +47,7 @@
     <Compile Include="DesignPattern.cs" />
     <Compile Include="Adapter.cs" />
     <Compile Include="TemplateMethod.cs" />
+    <Compile Include="FactoryMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
