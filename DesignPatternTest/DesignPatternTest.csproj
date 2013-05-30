@@ -38,6 +38,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="FileIOTest.cs" />
     <Compile Include="TemplateMethodTest.cs" />
+    <Compile Include="FactoryMethodTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
