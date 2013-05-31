@@ -8,9 +8,17 @@ namespace DesignPatternTest
 	public class TemplateMethodTest
 	{
 		[TestCase]
-		public void TestCharDisplay ()
+		public void InitializeWithCharacterThenDisplay ()
 		{
+			AbstractDisplay aDisp = new CharDisplay ('H');
+			aDisp.Display ();
+		}
 
+		[TestCase]
+		public void InitializeWithStringThenDisplay()
+		{
+			AbstractDisplay disp = new StringDisplay ("Hello World");
+			disp.Display ();
 		}
 	}
 }
