@@ -46,28 +46,21 @@ namespace DesignPattern.FactoryMethod
 
 		public class IDCardFactory:Factory
 		{
-			public void ShowAllSerialNumberWithName ()
-			{
-				//TODO: Show All
-			}
-
-			private List<string> owners = new List<string> ();
+			private SortedDictionary<int,string> owners = new SortedDictionary<int, string> ();
 			private int currentNumber;
 
 			protected override Product CreateProduct(string owner)
 			{
-				owners.Add (owner);
-				currentNumber++;
-
 				return new IDCard (owner);
 			}
 
 			protected override void RegisterProduct(Product product)
 			{
-				this.owners.Add (((IDCard)product).Owner);
+				this.owners.Add (currentNumber, ((IDCard)product).Owner);
+				currentNumber++;
 			}
 
-			public List<string> GetOwners()
+			public SortedDictionary<int, string> GetOwners()
 			{
 				return this.owners;
 			}

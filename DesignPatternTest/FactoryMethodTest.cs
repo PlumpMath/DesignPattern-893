@@ -23,7 +23,17 @@ namespace DesignPatternTest
 			var factory = new IDCardFactory ();
 			var idCard1 = factory.Create ("John Doe");
 			var idCard2 = factory.Create ("iKW HiDARi");
-			factory.ShowAllSerialNumberWithName ();
+			var idCard3 = factory.Create ("HogeHoge");
+
+			var ownerList = factory.GetOwners ();
+			foreach (var item in ownerList)
+			{
+				Console.WriteLine("No.{0}: {1}",item.Key,item.Value);
+			}
+
+			idCard1.Use ();
+			idCard2.Use ();
+			idCard3.Use ();
 		}
 	}
 }

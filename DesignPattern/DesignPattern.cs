@@ -46,8 +46,8 @@ namespace DesignPattern
 
 			#region  Factory Method Pattern ***/
 			Factory factory = new IDCardFactory ();
-			Product card1 = factory.Create ("Ikawa");
-			Product card2 = factory.Create ("Sho");
+			Product card1 = factory.Create ("iKW");
+			Product card2 = factory.Create ("HiDARi");
 			Product card3 = factory.Create ("John Doe");
 
 			card1.Use ();
