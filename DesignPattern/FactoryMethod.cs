@@ -46,9 +46,19 @@ namespace DesignPattern.FactoryMethod
 
 		public class IDCardFactory:Factory
 		{
+			public void ShowAllSerialNumberWithName ()
+			{
+				//TODO: Show All
+			}
+
 			private List<string> owners = new List<string> ();
+			private int currentNumber;
+
 			protected override Product CreateProduct(string owner)
 			{
+				owners.Add (owner);
+				currentNumber++;
+
 				return new IDCard (owner);
 			}
 

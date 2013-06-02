@@ -16,6 +16,15 @@ namespace DesignPatternTest
 			var id = factory.Create (name);
 			id.Use ();
 		}
+
+		[TestCase]
+		public void CreateTwoCardAndGetSerialNumberTest()
+		{
+			var factory = new IDCardFactory ();
+			var idCard1 = factory.Create ("John Doe");
+			var idCard2 = factory.Create ("iKW HiDARi");
+			factory.ShowAllSerialNumberWithName ();
+		}
 	}
 }
 
