@@ -1,11 +1,20 @@
 using System;
+using NUnit.Framework;
+using DesignPattern.Singleton;
 
 namespace DesignPatternTest
 {
+	[TestFixture]
 	public class SingletonTest
 	{
-		public SingletonTest ()
+		[TestCase]
+		public void InitializeSingletonTest ()
 		{
+			Console.WriteLine ("Start.");
+			var obj1 = Singleton.GetInstance ();
+			var obj2 = Singleton.GetInstance ();
+			Assert.That (obj1, Is.EqualTo (obj2));
+			Console.WriteLine ("End.");
 		}
 	}
 }
