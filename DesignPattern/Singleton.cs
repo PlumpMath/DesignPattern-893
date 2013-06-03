@@ -4,8 +4,7 @@ namespace DesignPattern.Singleton
 {
 	public class Singleton
 	{
-		// In C#, When create instance ?
-
+		// below instance create when GetInstance() to be called.
 		private static Singleton singleton = new Singleton ();
 
 		private Singleton ()
