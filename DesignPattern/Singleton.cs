@@ -17,5 +17,27 @@ namespace DesignPattern.Singleton
 			return singleton;
 		}
 	}
+
+	public class TicketMaker
+	{
+		private static TicketMaker singleton = new TicketMaker ();
+		private int ticket = 1000;
+
+		private TicketMaker()
+		{
+			Console.WriteLine ("TicketMaker Instance Generated.");
+		}
+
+		public int GetNextTicketNumber()
+		{
+			ticket++;
+			return ticket;
+		}
+
+		public static TicketMaker GetInstance ()
+		{
+			 return singleton;
+		}
+	}
 }
 
