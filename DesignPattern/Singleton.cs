@@ -8,9 +8,9 @@ namespace DesignPattern.Singleton
 
 		private static Singleton singleton = new Singleton ();
 
-		public Singleton ()
+		private Singleton ()
 		{
-			Console.WriteLine ("¥n****** Singleton Initialized *****¥n");
+			Console.WriteLine ("****** Singleton Initialized ******");
 		}
 
 		public static Singleton GetInstance ()
