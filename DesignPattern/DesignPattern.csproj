@@ -48,6 +48,7 @@
     <Compile Include="Adapter.cs" />
     <Compile Include="TemplateMethod.cs" />
     <Compile Include="FactoryMethod.cs" />
+    <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
