@@ -79,12 +79,12 @@ namespace DesignPatternTest
 			Assert.That (obj3.CallCount, Is.EqualTo (1));
 		}
 
-		[TestCase,Ignore]
+		[TestCase]
 		public void GetInstanceOverRun()
 		{
 			// To prevent exception, you need value object??
-			var obj = Triple.GetInstance ((InstanceID)4);
-			Assert.That(obj,Is.Null);
+			var ex = Assert.Throws<ArgumentOutOfRangeException> (
+				() =>Triple.GetInstance ((InstanceID)4));
 		}
 	}
 }
