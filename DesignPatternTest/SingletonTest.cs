@@ -50,6 +50,42 @@ namespace DesignPatternTest
 			var ticketMakerB = TicketMaker.GetInstance ();
 			Assert.That (ticketMakerB.GetNextTicketNumber (), Is.EqualTo (1003));
 		}
+
+		[TestCase]
+		public void TripleIsSingleton()
+		{
+			var obj1 = Triple.GetInstance (InstanceID.ONE);
+			var obj2 = Triple.GetInstance (InstanceID.TWO);
+			var obj3 = Triple.GetInstance (InstanceID.THREE);
+			var obj1b = Triple.GetInstance (InstanceID.ONE);
+			var obj2b = Triple.GetInstance (InstanceID.TWO);
+			var obj3b = Triple.GetInstance (InstanceID.THREE);
+
+			Assert.That(obj1,Is.EqualTo(obj1b));
+			Assert.That(obj2,Is.EqualTo(obj2b));
+			Assert.That(obj3,Is.EqualTo(obj3b));
+		}
+
+		[TestCase]
+		public void CountTripleCalled()
+		{
+			var obj1 = Triple.GetInstance (InstanceID.ONE);
+			var obj3 = Triple.GetInstance (InstanceID.THREE);
+			obj1.Call ();
+			obj1.Call ();
+			obj3.Call ();
+
+			Assert.That (obj1.CallCount, Is.EqualTo (2));
+			Assert.That (obj3.CallCount, Is.EqualTo (1));
+		}
+
+		[TestCase,Ignore]
+		public void GetInstanceOverRun()
+		{
+			// To prevent exception, you need value object??
+			var obj = Triple.GetInstance ((InstanceID)4);
+			Assert.That(obj,Is.Null);
+		}
 	}
 }
 

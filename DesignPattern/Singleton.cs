@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DesignPattern.Singleton
 {
@@ -37,6 +38,39 @@ namespace DesignPattern.Singleton
 		public static TicketMaker GetInstance ()
 		{
 			 return singleton;
+		}
+	}
+
+	public enum InstanceID
+	{
+		ONE,
+		TWO,
+		THREE
+	}
+
+	public class Triple
+	{
+		private static List<Triple> instances = new List<Triple>{
+			new Triple(){CallCount=0,Id=1},
+			new Triple(){CallCount=0,Id=2},
+			new Triple(){CallCount=0,Id=3}
+		};
+
+		public int CallCount{ get; private set; }
+		public int Id{ get; private set; }
+
+		private Triple()
+		{
+			Console.WriteLine ("Start Triple");
+		}
+
+		public static Triple GetInstance(InstanceID id)
+		{
+			return instances[(int)id];
+		}
+
+		public void Call(){
+			this.CallCount++;
 		}
 	}
 }
