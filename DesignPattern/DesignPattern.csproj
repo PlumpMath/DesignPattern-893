@@ -49,6 +49,7 @@
     <Compile Include="TemplateMethod.cs" />
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="Singleton.cs" />
+    <Compile Include="Prototype.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

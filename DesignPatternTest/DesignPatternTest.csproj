@@ -40,6 +40,7 @@
     <Compile Include="TemplateMethodTest.cs" />
     <Compile Include="FactoryMethodTest.cs" />
     <Compile Include="SingletonTest.cs" />
+    <Compile Include="PrototypeTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
