@@ -51,17 +51,17 @@ namespace DesignPattern.Singleton
 	public class Triple
 	{
 		private static List<Triple> instances = new List<Triple>{
-			new Triple(){CallCount=0,Id=1},
-			new Triple(){CallCount=0,Id=2},
-			new Triple(){CallCount=0,Id=3}
+			new Triple(InstanceID.ONE){CallCount=0,Id=1},
+			new Triple(InstanceID.TWO){CallCount=0,Id=2},
+			new Triple(InstanceID.THREE){CallCount=0,Id=3}
 		};
 
 		public int CallCount{ get; private set; }
 		public int Id{ get; private set; }
 
-		private Triple()
+		private Triple(InstanceID id)
 		{
-			Console.WriteLine ("Start Triple");
+			Console.WriteLine (string.Format ("Instatnce {0} was created.", (int)id));
 		}
 
 		public static Triple GetInstance(InstanceID id)
