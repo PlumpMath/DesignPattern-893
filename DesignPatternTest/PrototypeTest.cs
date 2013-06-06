@@ -1,6 +1,7 @@
 using System;
-using NUnit.Framework;
+using DesignPattern.Prototype;
 using DesignPattern.Prototype.Framework;
+using NUnit.Framework;
 
 namespace DesignPatternTest
 {
@@ -12,10 +13,10 @@ namespace DesignPatternTest
 		{
 			Manager manager = new Manager ();
 			UnderLinePen upen = new UnderLinePen ('~');
-			manager.register ("strong message", upen);
+			manager.Register ("strong message", upen);
 
-			IProduct p1 = manager.create ("strong message");
-			p1.use ("Hello World.");
+			IProduct p1 = manager.Create ("strong message");
+			p1.Use ("Hello World.");
 		}
 	}
 }
