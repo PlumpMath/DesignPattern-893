@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using DesignPattern.Prototype.Framework;
 
 namespace DesignPattern.Prototype
@@ -37,24 +38,36 @@ namespace DesignPattern.Prototype
 	{
 		private char ulcahr;
 
-		public UnderLinePen(char ulchar)
+		public UnderLinePen(char underLineChar)
 		{
-			this.ulcahr = ulcahr;
+			this.ulcahr = underLineChar;
 		}
 
 		public Object Clone()
 		{
-			return null;
+			return MemberwiseClone();
 		}
 
 		public void Use(string message)
 		{
+			int length = Encoding.GetEncoding ("Shift_JIS").GetByteCount (message);
+			Console.WriteLine(@"""" + message + @"""");
+			Console.Write (" ");
+			for (int i = 0; i < length; i++) {
+				Console.Write(this.ulcahr);
+			}
+			Console.WriteLine (" ");
 		}
 
 		public Framework.IProduct CreateClone ()
 		{
 			IProduct p = null;
-			p = (IProduct)this.MemberwiseClone ();
+			try {
+				p = (IProduct)this.Clone ();
+			} catch (Exception ex) {
+				Console.WriteLine(ex.Message);
+			}
+
 			return p;
 		}
 	}
