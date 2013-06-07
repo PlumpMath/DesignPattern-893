@@ -18,6 +18,16 @@ namespace DesignPatternTest
 			IProduct p1 = manager.Create ("strong message");
 			p1.Use ("Hello World.");
 		}
+		[TestCase]
+		public void UseMessageboxTest()
+		{
+			Manager manager = new Manager ();
+			UseMessagebox mbox = new MessageBox ('*');
+			manager.Register ("warning box", mbox);
+
+			IProduct wbox = manager.Create ("warning box");
+			wbox.Use ("Hello World");
+		}
 	}
 }
 
