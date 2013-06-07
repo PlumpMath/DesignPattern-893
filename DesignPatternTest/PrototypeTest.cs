@@ -19,10 +19,10 @@ namespace DesignPatternTest
 			p1.Use ("Hello World.");
 		}
 		[TestCase]
-		public void UseMessageboxTest()
+		public void UseMessageBoxTest()
 		{
 			Manager manager = new Manager ();
-			UseMessagebox mbox = new MessageBox ('*');
+			MessageBox mbox = new MessageBox ('*');
 			manager.Register ("warning box", mbox);
 
 			IProduct wbox = manager.Create ("warning box");

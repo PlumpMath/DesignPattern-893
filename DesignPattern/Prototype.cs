@@ -72,5 +72,30 @@ namespace DesignPattern.Prototype
 			return p;
 		}
 	}
+
+	public class MessageBox : IProduct
+	{
+		private char decoChar;
+
+		public MessageBox(char decorationChar)
+		{
+			this.decoChar = decorationChar;
+		}
+
+		public Object Clone()
+		{
+			return this.MemberwiseClone ();
+		}
+
+		public void Use(string message)
+		{
+
+		}
+
+		public IProduct CreateClone()
+		{
+			return null;
+		}
+	}
 }
 
