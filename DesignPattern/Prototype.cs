@@ -36,7 +36,6 @@ namespace DesignPattern.Prototype
 
 	public class UnderLinePen:IProduct
 	{
-		// TODO Test
 		private char ulcahr;
 
 		public UnderLinePen(char underLineChar)

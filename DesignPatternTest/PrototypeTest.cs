@@ -8,26 +8,29 @@ namespace DesignPatternTest
 	[TestFixture]
 	public class PrototypeTest
 	{
-		[TestCase]
-		public void UsePrototypeWithUnderLinePenTest ()
+		[TestCase('~', "strog message")]
+		public void UsePrototypeWithUnderLinePenTest (char ulchar, string message)
 		{
 			Manager manager = new Manager ();
-			UnderLinePen upen = new UnderLinePen ('~');
-			manager.Register ("strong message", upen);
+			UnderLinePen upen = new UnderLinePen (ulchar);
+			manager.Register (message, upen);
 
-			IProduct p1 = manager.Create ("strong message");
-			p1.Use ("Hello World.");
+			IProduct p1 = manager.Create (message);
+			p1.Use ("Hello World");
 		}
-		[TestCase]
-		public void UseMessageBoxTest()
+		[TestCase('*', "warning box")]
+		[TestCase('/', "slash box")]
+		public void UseMessageBoxTest(char decoChar, string message)
 		{
 			Manager manager = new Manager ();
-			MessageBox mbox = new MessageBox ('*');
-			manager.Register ("warning box", mbox);
+			MessageBox mbox = new MessageBox (decoChar);
+			manager.Register (message, mbox);
 
-			IProduct wbox = manager.Create ("warning box");
+			IProduct wbox = manager.Create (message);
 			wbox.Use ("Hello World");
 		}
+
+		// TODO: add test case to assert to use multi prototype.
 	}
 }
 
