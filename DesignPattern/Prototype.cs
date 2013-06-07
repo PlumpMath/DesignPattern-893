@@ -89,12 +89,32 @@ namespace DesignPattern.Prototype
 
 		public void Use(string message)
 		{
+			int length = Encoding.GetEncoding ("Shift_JIS").GetByteCount (message) + 4;
 
+			for (int i = 0; i < length; i++) 
+			{
+				Console.Write (string.Format ("{0}", decoChar));
+			}
+			Console.WriteLine ("");
+
+			Console.WriteLine (string.Format("{0} {1} {0}",decoChar,message));
+
+			for (int i = 0; i < length; i++) 
+			{
+				Console.Write (string.Format ("{0}", decoChar));
+			}
+			Console.WriteLine ("");
 		}
 
 		public IProduct CreateClone()
 		{
-			return null;
+			IProduct p = null;
+			try {
+				p = (IProduct)this.Clone();
+			} catch (Exception ex) {
+				Console.WriteLine(ex.Message);
+			}
+			return p;
 		}
 	}
 }
