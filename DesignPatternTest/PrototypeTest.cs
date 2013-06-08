@@ -30,7 +30,31 @@ namespace DesignPatternTest
 			wbox.Use ("Hello World");
 		}
 
-		// TODO: add test case to assert to use multi prototype.
+		[TestCase]
+		public void UseBothPrototype()
+		{
+			Manager manager = new Manager ();
+
+			UnderLinePen upen = new UnderLinePen ('-');
+			MessageBox mbox = new MessageBox ('*');
+			MessageBox sbox = new MessageBox ('/');
+			UnderLinePen hpen = new UnderLinePen ('~');
+
+			manager.Register ("strong message", upen);
+			manager.Register ("warning box", mbox);
+			manager.Register ("slash box", sbox);
+			manager.Register ("strong message2", hpen);
+
+			IProduct p1 = manager.Create ("warning box");
+			IProduct p2 = manager.Create ("strong message2");
+			IProduct p3 = manager.Create ("slash box");
+			IProduct p4 = manager.Create ("strong message");
+
+			p1.Use ("Hello Warld");
+			p2.Use ("Hello Warld");
+			p3.Use ("Hello Warld");
+			p4.Use ("Hello Warld");
+		}
 	}
 }
 
