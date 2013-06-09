@@ -16,6 +16,7 @@ namespace DesignPattern.Prototype
 		public class Manager
 		{
 			private Dictionary<string, IProduct> showcase = new Dictionary<string, IProduct>();
+
 			public Manager ()
 			{
 			}
@@ -53,18 +54,23 @@ namespace DesignPattern.Prototype
 			int length = Encoding.GetEncoding ("Shift_JIS").GetByteCount (message);
 			Console.WriteLine(@"""" + message + @"""");
 			Console.Write (" ");
-			for (int i = 0; i < length; i++) {
+			for (int i = 0; i < length; i++)
+			{
 				Console.Write(this.ulcahr);
 			}
+
 			Console.WriteLine (" ");
 		}
 
-		public Framework.IProduct CreateClone ()
+		public IProduct CreateClone ()
 		{
 			IProduct p = null;
-			try {
+			try 
+			{
 				p = (IProduct)this.Clone ();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				Console.WriteLine(ex.Message);
 			}
 
@@ -108,11 +114,15 @@ namespace DesignPattern.Prototype
 		public IProduct CreateClone()
 		{
 			IProduct p = null;
-			try {
+			try 
+			{
 				p = (IProduct)this.Clone();
-			} catch (Exception ex) {
+			} 
+			catch (Exception ex)
+			{
 				Console.WriteLine(ex.Message);
 			}
+
 			return p;
 		}
 	}
