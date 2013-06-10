@@ -15,7 +15,7 @@ namespace DesignPatternTest
 			UnderLinePen upen = new UnderLinePen (ulchar);
 			manager.Register (message, upen);
 
-			IProduct p1 = manager.Create (message);
+			Product p1 = manager.Create (message);
 			p1.Use ("Hello World");
 		}
 		[TestCase('*', "warning box")]
@@ -26,7 +26,7 @@ namespace DesignPatternTest
 			MessageBox mbox = new MessageBox (decoChar);
 			manager.Register (message, mbox);
 
-			IProduct wbox = manager.Create (message);
+			Product wbox = manager.Create (message);
 			wbox.Use ("Hello World");
 		}
 
@@ -45,10 +45,10 @@ namespace DesignPatternTest
 			manager.Register ("slash box", sbox);
 			manager.Register ("strong message2", hpen);
 
-			IProduct p1 = manager.Create ("warning box");
-			IProduct p2 = manager.Create ("strong message2");
-			IProduct p3 = manager.Create ("slash box");
-			IProduct p4 = manager.Create ("strong message");
+			Product p1 = manager.Create ("warning box");
+			Product p2 = manager.Create ("strong message2");
+			Product p3 = manager.Create ("slash box");
+			Product p4 = manager.Create ("strong message");
 
 			p1.Use ("Hello Warld");
 			p2.Use ("Hello Warld");

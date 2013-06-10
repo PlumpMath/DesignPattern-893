@@ -7,35 +7,52 @@ namespace DesignPattern.Prototype
 {
 	namespace Framework
 	{
-		public interface IProduct:ICloneable
+		public abstract class Product : ICloneable
 		{
-			void Use (string s);
-			IProduct CreateClone ();
+			public abstract void Use (string s);
+			public object Clone()
+			{
+				return MemberwiseClone ();
+			}
+			public Product CreateClone ()
+			{
+				Product p = null;
+				try 
+				{
+					p = (Product)this.Clone ();
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+				
+				return p;
+			}
 		}
 
 		public class Manager
 		{
-			private Dictionary<string, IProduct> showcase = new Dictionary<string, IProduct>();
+			private Dictionary<string, Product> showcase = new Dictionary<string, Product>();
 
 			public Manager ()
 			{
 			}
 
-			public void Register(string name, IProduct proto)
+			public void Register(string name, Product proto)
 			{
 				showcase.Add (name, proto);
 			}
 
-			public IProduct Create(string protoName)
+			public Product Create(string protoName)
 			{
-				IProduct p = null;
+				Product p = null;
 				showcase.TryGetValue(protoName, out p);
 				return p.CreateClone ();
 			}
 		}
 	}
 
-	public class UnderLinePen:IProduct
+	public class UnderLinePen:Product
 	{
 		private char ulcahr;
 
@@ -44,12 +61,7 @@ namespace DesignPattern.Prototype
 			this.ulcahr = underLineChar;
 		}
 
-		public Object Clone()
-		{
-			return MemberwiseClone();
-		}
-
-		public void Use(string message)
+		public override void Use(string message)
 		{
 			int length = Encoding.GetEncoding ("Shift_JIS").GetByteCount (message);
 			Console.WriteLine(@"""" + message + @"""");
@@ -61,24 +73,9 @@ namespace DesignPattern.Prototype
 
 			Console.WriteLine (" ");
 		}
-
-		public IProduct CreateClone ()
-		{
-			IProduct p = null;
-			try 
-			{
-				p = (IProduct)this.Clone ();
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-
-			return p;
-		}
 	}
 
-	public class MessageBox : IProduct
+	public class MessageBox : Product
 	{
 		private char decoChar;
 
@@ -87,12 +84,7 @@ namespace DesignPattern.Prototype
 			this.decoChar = decorationChar;
 		}
 
-		public Object Clone()
-		{
-			return this.MemberwiseClone ();
-		}
-
-		public void Use(string message)
+		public override void Use(string message)
 		{
 			int length = Encoding.GetEncoding ("Shift_JIS").GetByteCount (message) + 4;
 
@@ -109,21 +101,6 @@ namespace DesignPattern.Prototype
 				Console.Write (string.Format ("{0}", decoChar));
 			}
 			Console.WriteLine ("");
-		}
-
-		public IProduct CreateClone()
-		{
-			IProduct p = null;
-			try 
-			{
-				p = (IProduct)this.Clone();
-			} 
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-
-			return p;
 		}
 	}
 }
