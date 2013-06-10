@@ -50,6 +50,7 @@
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="Prototype.cs" />
+    <Compile Include="Builder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

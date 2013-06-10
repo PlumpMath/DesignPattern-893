@@ -41,6 +41,7 @@
     <Compile Include="FactoryMethodTest.cs" />
     <Compile Include="SingletonTest.cs" />
     <Compile Include="PrototypeTest.cs" />
+    <Compile Include="BuilderTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
