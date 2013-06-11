@@ -11,7 +11,7 @@ namespace DesignPatternTest
 		[TestCase]
 		public void TextBuilderTest ()
 		{
-			var textbuilder = new TextBuilder();
+			Builder textbuilder = new TextBuilder();
 			var director = new Director(textbuilder);
 			director.Construct();
 			var result = textbuilder.GetResult();
@@ -22,7 +22,7 @@ namespace DesignPatternTest
 		[TestCase]
 		public void HtmlBuilderTest()
 		{
-			var htmlBuilder = new HtmlBuilder();
+			Builder htmlBuilder = new HtmlBuilder();
 			var director = new Director(htmlBuilder);
 			director.Construct();
 			var filename = htmlBuilder.GetResult();

@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DesignPattern.Builder
 {
-	public abstract class Builder
+	public interface IBuilder
 	{
-		public abstract void MakeTitle(string title);
-		public abstract void MakeString (string str);
-		public abstract void MakeItems (string[] items);
-		public abstract void Close ();
+		void MakeTitle(string title);
+		void MakeString (string str);
+		void MakeItems (string[] items);
+		void Close ();
 	}
 
 	public class Director
