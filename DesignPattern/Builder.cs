@@ -9,13 +9,14 @@ namespace DesignPattern.Builder
 		void MakeTitle(string title);
 		void MakeString (string str);
 		void MakeItems (string[] items);
+		string GetResult ();
 		void Close ();
 	}
 
 	public class Director
 	{
-		private Builder builder;
-		public Director (Builder builder)
+		private IBuilder builder;
+		public Director (IBuilder builder)
 		{
 			this.builder = builder;
 		}
@@ -36,31 +37,31 @@ namespace DesignPattern.Builder
 		}
 	}
 
-	public class TextBuilder: Builder
+	public class TextBuilder: IBuilder
 	{
 		private StringBuilder buffer = new StringBuilder ();
 
-		public override void MakeTitle(string title)
+		public void MakeTitle(string title)
 		{
 			buffer.Append ("==========================================/n");
 			buffer.Append ("[[" + title + "]]¥n");
 			buffer.Append ("¥n");
 		}
 
-		public override void MakeString(string str)
+		public void MakeString(string str)
 		{
 			buffer.Append ("-->" + str + "¥n");
 			buffer.Append ("¥n");
 		}
 
-		public override void MakeItems(string[] items)
+		public void MakeItems(string[] items)
 		{
 			for (int i = 0; i < items.Length; i++) {
 				buffer.Append("*" + items[i] + "¥n");
 			}
 			buffer.Append ("¥n");
 		}
-		public override void Close()
+		public void Close()
 		{
 			buffer.Append("==========================================¥n");
 		}
@@ -70,22 +71,22 @@ namespace DesignPattern.Builder
 		}
 	}
 
-	public class HtmlBuilder : Builder
+	public class HtmlBuilder : IBuilder
 	{
 		private string filename;
 		private StringBuilder buffer = new StringBuilder();
 
-		public override void MakeTitle(string title)
+		public void MakeTitle(string title)
 		{
 			filename = title + ".html";
 			buffer.Append ("<html><head><title>" + title + "</title></head><body>");
 			buffer.Append ("<h1>" + title + "</h1>");
 		}
-		public override void MakeString(string str)
+		public void MakeString(string str)
 		{
 			buffer.Append ("<p>" + str + "</p>");
 		}
-		public override void MakeItems(string[] items)
+		public void MakeItems(string[] items)
 		{
 			buffer.Append ("<ul>");
 			for (int i = 0; i < items.Length; i++) {
@@ -93,7 +94,7 @@ namespace DesignPattern.Builder
 			}
 			buffer.Append ("</ul>");
 		}
-		public override void Close()
+		public void Close()
 		{
 			buffer.Append ("</body></html>");
 			File.WriteAllText (filename, buffer.ToString ());
