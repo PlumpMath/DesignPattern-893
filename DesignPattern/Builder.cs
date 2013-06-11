@@ -22,7 +22,17 @@ namespace DesignPattern.Builder
 
 		public void Construct ()
 		{
-			throw new NotImplementedException ();
+			builder.MakeTitle ("Greeting");
+			builder.MakeString ("From the Morning to about Launch Time");
+			builder.MakeItems (new string[]{
+				"Good Morning",
+				"Hello"});
+			builder.MakeString ("In the Night");
+			builder.MakeItems (new string[]{
+				"Good Evening",
+				"Good Night",
+				"See you tomorrow"});
+			builder.Close ();
 		}
 	}
 
@@ -32,7 +42,7 @@ namespace DesignPattern.Builder
 
 		public override void MakeTitle(string title)
 		{
-			buffer.Append ("==========================================¥n");
+			buffer.Append ("==========================================/n");
 			buffer.Append ("[[" + title + "]]¥n");
 			buffer.Append ("¥n");
 		}
@@ -86,6 +96,7 @@ namespace DesignPattern.Builder
 		public override void Close()
 		{
 			buffer.Append ("</body></html>");
+			File.WriteAllText (filename, buffer.ToString ());
 		}
 		public string GetResult ()
 		{
