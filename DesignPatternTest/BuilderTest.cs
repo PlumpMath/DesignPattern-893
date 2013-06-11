@@ -36,7 +36,8 @@ namespace DesignPatternTest
 
 		public static void Usage()
 		{
-			Console.WriteLine ("");
+			Console.WriteLine ("Argument: plain\tgenerate as plain text.");
+			Console.WriteLine("Argument: html\tgenerate as HTML file.");
 		}
 	}
 }

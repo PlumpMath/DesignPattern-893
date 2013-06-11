@@ -17,6 +17,51 @@ namespace DesignPattern.Builder
 		{
 			this.builder = builder;
 		}
+
+		public void Construct ()
+		{
+			throw new NotImplementedException ();
+		}
+	}
+
+	public class TextBuilder: Builder
+	{
+		public override void MakeTitle(string title)
+		{
+		}
+		public override void MakeString(string str)
+		{
+		}
+		public override void MakeItems(string[] items)
+		{
+		}
+		public override void Close()
+		{
+		}
+		public string GetResult ()
+		{
+			throw new NotImplementedException ();
+		}
+	}
+
+	public class HtmlBuilder : Builder
+	{
+		public override void MakeTitle(string title)
+		{
+		}
+		public override void MakeString(string str)
+		{
+		}
+		public override void MakeItems(string[] items)
+		{
+		}
+		public override void Close()
+		{
+		}
+		public string GetResult ()
+		{
+			throw new NotImplementedException ();
+		}
 	}
 }
 
