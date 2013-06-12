@@ -6,10 +6,21 @@ namespace DesignPattern.Builder
 {
 	public abstract class Builder
 	{
-		public abstract void MakeTitle(string title);
+		private bool initialized = false;
+
+		protected abstract void BuildTitle(string title);
 		public abstract void MakeString (string str);
 		public abstract void MakeItems (string[] items);
 		public abstract void Close ();
+
+		public void MakeTitle(string title)
+		{
+			if (!initialized) 
+			{
+				BuildTitle(title);
+				initialized = true;
+			}
+		}
 	}
 
 	public class Director
@@ -40,7 +51,7 @@ namespace DesignPattern.Builder
 	{
 		private StringBuilder buffer = new StringBuilder ();
 
-		public override void MakeTitle(string title)
+		protected override void BuildTitle(string title)
 		{
 			buffer.Append ("==========================================/n");
 			buffer.Append ("[[" + title + "]]¥n");
@@ -75,7 +86,7 @@ namespace DesignPattern.Builder
 		private string filename;
 		private StringBuilder buffer = new StringBuilder();
 
-		public override void MakeTitle(string title)
+		protected override void BuildTitle(string title)
 		{
 			filename = title + ".html";
 			buffer.Append ("<html><head><title>" + title + "</title></head><body>");
