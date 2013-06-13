@@ -4,14 +4,15 @@ using System.Text;
 
 namespace DesignPattern.Builder
 {
-	public interface IBuilder
+	public abstract class Builder
 	{
 		private bool initialized = false;
 
 		protected abstract void BuildTitle(string title);
-		public abstract void MakeString (string str);
-		public abstract void MakeItems (string[] items);
+		protected abstract void BuildString (string str);
+		protected abstract void BuildItems (string[] items);
 		public abstract void Close ();
+		public abstract string GetResult ();
 
 		public void MakeTitle(string title)
 		{
@@ -21,12 +22,36 @@ namespace DesignPattern.Builder
 				initialized = true;
 			}
 		}
+
+		public void MakeString(string str)
+		{
+			if (initialized)
+			{
+				BuildString(str);
+			}
+			else 
+			{
+				Console.WriteLine("You have to call MakeTitle befor call MakeString.");
+			}
+		}
+
+		public void MakeItems(string[] items)
+		{
+			if (initialized) 
+			{
+				BuildItems(items);
+			}
+			else
+			{
+				Console.WriteLine("You have to call MakeTitle befor call MakeItems.");
+			}
+		}
 	}
 
 	public class Director
 	{
-		private IBuilder builder;
-		public Director (IBuilder builder)
+		private Builder builder;
+		public Director (Builder builder)
 		{
 			this.builder = builder;
 		}
@@ -47,7 +72,7 @@ namespace DesignPattern.Builder
 		}
 	}
 
-	public class TextBuilder: IBuilder
+	public class TextBuilder: Builder
 	{
 		private StringBuilder buffer = new StringBuilder ();
 
@@ -58,30 +83,30 @@ namespace DesignPattern.Builder
 			buffer.Append ("¥n");
 		}
 
-		public void MakeString(string str)
+		protected override void BuildString(string str)
 		{
 			buffer.Append ("-->" + str + "¥n");
 			buffer.Append ("¥n");
 		}
 
-		public void MakeItems(string[] items)
+		protected override void BuildItems(string[] items)
 		{
 			for (int i = 0; i < items.Length; i++) {
 				buffer.Append("*" + items[i] + "¥n");
 			}
 			buffer.Append ("¥n");
 		}
-		public void Close()
+		public override void Close()
 		{
 			buffer.Append("==========================================¥n");
 		}
-		public string GetResult ()
+		public override string GetResult ()
 		{
 			return buffer.ToString ();
 		}
 	}
 
-	public class HtmlBuilder : IBuilder
+	public class HtmlBuilder : Builder
 	{
 		private string filename;
 		private StringBuilder buffer = new StringBuilder();
@@ -92,11 +117,11 @@ namespace DesignPattern.Builder
 			buffer.Append ("<html><head><title>" + title + "</title></head><body>");
 			buffer.Append ("<h1>" + title + "</h1>");
 		}
-		public void MakeString(string str)
+		protected override void BuildString(string str)
 		{
 			buffer.Append ("<p>" + str + "</p>");
 		}
-		public void MakeItems(string[] items)
+		protected override void BuildItems(string[] items)
 		{
 			buffer.Append ("<ul>");
 			for (int i = 0; i < items.Length; i++) {
@@ -104,12 +129,12 @@ namespace DesignPattern.Builder
 			}
 			buffer.Append ("</ul>");
 		}
-		public void Close()
+		public override void Close()
 		{
 			buffer.Append ("</body></html>");
 			File.WriteAllText (filename, buffer.ToString ());
 		}
-		public string GetResult ()
+		public override string GetResult ()
 		{
 			return filename;
 		}
