@@ -28,6 +28,16 @@ namespace DesignPatternTest
 			var filename = htmlBuilder.GetResult();
 			Console.WriteLine("File Name: {0} have created.", filename);
 		}
+
+		[TestCase]
+		public void MarkdownBuilderTest()
+		{
+			Builder markdownBuilder = new MarkdownBuilder ();
+			var director = new Director (markdownBuilder);
+			director.Construct ();
+			var filename = markdownBuilder.GetResult ();
+			Console.WriteLine("File Name: {0} have created.", filename);
+		}
 	}
 }
 

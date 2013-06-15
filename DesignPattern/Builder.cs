@@ -31,7 +31,7 @@ namespace DesignPattern.Builder
 			}
 			else 
 			{
-				Console.WriteLine("You have to call MakeTitle befor call MakeString.");
+				Console.WriteLine("You have to call MakeTitle befor calling MakeString.");
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace DesignPattern.Builder
 		protected override void BuildItems(string[] items)
 		{
 			for (int i = 0; i < items.Length; i++) {
-				buffer.Append("*" + items[i] + "¥n");
+				buffer.Append("*" + items[i] + "/n");
 			}
 			buffer.Append ("¥n");
 		}
@@ -135,6 +135,39 @@ namespace DesignPattern.Builder
 			File.WriteAllText (filename, buffer.ToString ());
 		}
 		public override string GetResult ()
+		{
+			return filename;
+		}
+	}
+
+	public class MarkdownBuilder : Builder
+	{
+		private string filename;
+		private StringBuilder buffer = new StringBuilder ();
+
+		protected override void BuildTitle(string title)
+		{
+			filename = title + ".md";
+			buffer.Append ("#" + title);
+			buffer.Append ("¥n");
+		}
+		protected override void BuildString(string str){
+			buffer.Append ("¥n" + str + "¥n");
+		}
+		protected override void BuildItems(string[] items)
+		{
+			buffer.Append ("¥n");
+			foreach (var item in items) {
+				buffer.Append("* " + item);
+			}
+
+			buffer.Append ("¥n");
+		}
+		public override void Close()
+		{
+			File.WriteAllText (filename, buffer.ToString ());
+		}
+		public override string GetResult()
 		{
 			return filename;
 		}
