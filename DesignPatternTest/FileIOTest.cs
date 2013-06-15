@@ -3,9 +3,9 @@ using System.IO;
 using NUnit.Framework;
 using DesignPattern.Adapter;
 
-namespace DesignPatternTest.Adapter
+namespace DesignPatternTest
 {
-	[TestFixture]
+	[TestFixture, Ignore]
 	public class FilePropertiesTest
 	{
 		[SetUp]
