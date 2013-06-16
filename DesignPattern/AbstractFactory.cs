@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPattern
+namespace DesignPattern.AbstractFactory
 {
 	public class AbstractFactory
 	{
