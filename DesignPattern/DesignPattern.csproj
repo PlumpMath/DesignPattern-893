@@ -51,6 +51,7 @@
     <Compile Include="Singleton.cs" />
     <Compile Include="Prototype.cs" />
     <Compile Include="Builder.cs" />
+    <Compile Include="AbstractFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
