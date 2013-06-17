@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DesignPattern.AbstractFactory
 {
@@ -37,6 +38,33 @@ namespace DesignPattern.AbstractFactory
 			{
 				tray.Add (item);
 			}
+		}
+
+		public abstract class Page
+		{
+			protected string title;
+			protected string auther;
+			protected List<Item> contents = new List<Item>();
+
+			public Page(string title, string auther)
+			{
+				this.title = title;
+				this.auther = auther;
+			}
+
+			public void Add(Item item)
+			{
+				contents.Add (item);
+			}
+
+			public void Output()
+			{
+				var filename = this.title + ".html";
+				File.WriteAllText (filename, this.MakeHtml ());
+				Console.WriteLine (filename + " was created.");
+			}
+
+			public abstract string MakeHtml();
 		}
 	}
 }
