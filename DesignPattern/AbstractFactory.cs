@@ -87,17 +87,56 @@ namespace DesignPattern.AbstractFactory
 		{
 			public override Link CreateLink(string caption, string url)
 			{
-				throw new NotImplementedException ();
+				return new ListLink (caption, url);
 			}
 
 			public override Tray CreateTray(string caption)
 			{
-				throw new NotImplementedException ();
+				return new ListTray (caption);
 			}
 
 			public override Page CreatePage(string title, string auther)
 			{
-				throw new NotImplementedException();
+				return new ListPage (title, auther);
+			}
+		}
+
+		public class ListLink : Link
+		{
+			public ListLink (string caption, string url)
+				:base(caption, url)
+			{
+			}
+
+			public override string MakeHtml ()
+			{
+				throw new NotImplementedException ();
+			}
+		}
+
+		public class ListTray : Tray
+		{
+			public ListTray(string caption)
+				:base(caption)
+			{
+			}
+
+			public override string MakeHtml ()
+			{
+				throw new NotImplementedException ();
+			}
+		}
+
+		public class ListPage : Page
+		{
+			public ListPage(string title, string auther)
+				:base(title, auther)
+			{
+			}
+
+			public override string MakeHtml ()
+			{
+				throw new NotImplementedException ();
 			}
 		}
 	}
