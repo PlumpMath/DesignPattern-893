@@ -1,5 +1,5 @@
 using System;
-using DesignPattern.AbstractFactory.Factory;
+using DesignPattern.AbstractFactory.AbstractFactory;
 using NUnit.Framework;
 
 namespace DesignPatternTest
@@ -23,7 +23,18 @@ namespace DesignPatternTest
 			newsTray.Add (yomiuri);
 
 			Tray yahooTray = factory.CreateTray ("Yahoo!");
+			yahooTray.Add (us_Yahoo);
+			yahooTray.Add (jp_Yahoo);
 
+			Tray searchTray = factory.CreateTray ("Search Engine");
+			searchTray.Add (yahooTray);
+			searchTray.Add (excite);
+			searchTray.Add (google);
+
+			Page page = factory.CreatePage ("Link Page", "HiDARi");
+			page.Add (newsTray);
+			page.Add (searchTray);
+			page.Output ();
 		}
 	}
 }

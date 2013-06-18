@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using DesignPattern.AbstractFactory.AbstractFactory;
 
 namespace DesignPattern.AbstractFactory
 {
-	namespace Factory
+	namespace AbstractFactory
 	{
 		public abstract class Item
 		{
@@ -69,7 +70,7 @@ namespace DesignPattern.AbstractFactory
 
 		public abstract class Factory
 		{
-			public static Factory GetFactory()
+			public static Factory GetFactory(string classname)
 			{
 				throw new NotImplementedException ();
 			}
@@ -80,9 +81,25 @@ namespace DesignPattern.AbstractFactory
 		}
 	}
 
-	namespace ListFactory
+	namespace ConcreteFactory
 	{
+		public class ListFactory : Factory
+		{
+			public override Link CreateLink(string caption, string url)
+			{
+				throw new NotImplementedException ();
+			}
 
+			public override Tray CreateTray(string caption)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override Page CreatePage(string title, string auther)
+			{
+				throw new NotImplementedException();
+			}
+		}
 	}
 }
 
