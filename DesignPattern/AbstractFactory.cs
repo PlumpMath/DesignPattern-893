@@ -66,6 +66,23 @@ namespace DesignPattern.AbstractFactory
 
 			public abstract string MakeHtml();
 		}
+
+		public abstract class Factory
+		{
+			public static Factory GetFactory()
+			{
+				throw new NotImplementedException ();
+			}
+
+			public abstract Link CreateLink(string caption, string url);
+			public abstract Tray CreateTray(string caption);
+			public abstract Page CreatePage(string title, string auther);
+		}
+	}
+
+	namespace ListFactory
+	{
+
 	}
 }
 
