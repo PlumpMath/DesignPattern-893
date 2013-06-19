@@ -36,6 +36,12 @@ namespace DesignPatternTest
 			page.Add (searchTray);
 			page.Output ();
 		}
+
+		[TestCase]
+		public void DoubleQtTest()
+		{
+
+			Console.WriteLine(@"Is This ""Double Quotation"" ?");
+		}
 	}
 }
-

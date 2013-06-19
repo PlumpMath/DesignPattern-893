@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using DesignPattern.AbstractFactory.AbstractFactory;
 
 namespace DesignPattern.AbstractFactory
@@ -110,7 +111,7 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml ()
 			{
-				throw new NotImplementedException ();
+				return @"<li><a href="""" + url + @"""">" + caption + "</a></li>";
 			}
 		}
 
@@ -123,7 +124,9 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml ()
 			{
-				throw new NotImplementedException ();
+				var buffer = new StringBuilder ();
+				buffer.Append ("");
+				return null;
 			}
 		}
 
