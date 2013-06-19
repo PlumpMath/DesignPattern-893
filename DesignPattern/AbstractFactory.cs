@@ -125,8 +125,16 @@ namespace DesignPattern.AbstractFactory
 			public override string MakeHtml ()
 			{
 				var buffer = new StringBuilder ();
-				buffer.Append ("");
-				return null;
+				buffer.Append ("<li>");
+				buffer.Append (caption);
+				buffer.Append ("<ul>");
+				foreach (var item in tray) 
+				{
+					buffer.Append(item.MakeHtml());
+				}
+
+				buffer.Append ("</ul></li>");
+				return buffer.ToString();
 			}
 		}
 
