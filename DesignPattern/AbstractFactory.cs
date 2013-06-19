@@ -71,9 +71,20 @@ namespace DesignPattern.AbstractFactory
 
 		public abstract class Factory
 		{
-			public static Factory GetFactory(string classname)
+			public static Factory GetFactory(string className)
 			{
-				throw new NotImplementedException ();
+				Factory factory = null;
+				try
+				{
+					Type type = Type.GetType (className);
+					factory = (Factory)Activator.CreateInstance(type);
+				}
+				catch(Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+
+				return factory;
 			}
 
 			public abstract Link CreateLink(string caption, string url);
