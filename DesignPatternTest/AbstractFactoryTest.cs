@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using DesignPattern.AbstractFactory.AbstractFactory;
 using NUnit.Framework;
 
@@ -10,13 +11,15 @@ namespace DesignPatternTest
 		[TestCase]
 		public void UseListFactoryTest ()
 		{
-			Factory factory = Factory.GetFactory ("hoge");
-			Link asahi = factory.CreateLink("AsahiShinbun", "http://www.asahi.com/");
-			Link yomiuri = factory.CreateLink ("Yomiuri", ",http://www.yomiuri.co.jp/");
-			Link us_Yahoo = factory.CreateLink("Yahoo!","http://www.yahoo.com/");
-			Link jp_Yahoo = factory.CreateLink ("Yahoo!Japan", "http://www yahoo・co.jp/");
-			Link excite = factory.CreateLink("Excite", "http://www.excite.com/");
-			Link google = factory.CreateLink ("Google", "http://www.google.com/");
+			Factory factory = Factory.GetFactory ("DesignPattern.AbstractFactory.ConcreteFactory.ListFactory");
+			Assert.That (factory, Is.Not.Null);
+
+			Link asahi = factory.CreateLink("AsahiShinbun", @"http://www.asahi.com/");
+			Link yomiuri = factory.CreateLink ("Yomiuri", @"http://www.yomiuri.co.jp/");
+			Link us_Yahoo = factory.CreateLink ("Yahoo!", @"http://www.yahoo.com/");
+			Link jp_Yahoo = factory.CreateLink ("Yahoo!Japan", @"http://www.yahoo.co.jp/");
+			Link excite = factory.CreateLink("Excite", @"http://www.excite.com/");
+			Link google = factory.CreateLink ("Google", @"http://www.google.com/");
 
 			Tray newsTray = factory.CreateTray ("NewsPaper");
 			newsTray.Add (asahi);
@@ -40,8 +43,15 @@ namespace DesignPatternTest
 		[TestCase]
 		public void DoubleQtTest()
 		{
-
 			Console.WriteLine(@"Is This ""Double Quotation"" ?");
+		}
+		[TestCase]
+		public void RefrectionTest()
+		{
+			Type type = Type.GetType ("System.Text.StringBuilder");
+			Assert.That (type, Is.Not.Null);
+			object obj = Activator.CreateInstance (type);
+			Console.WriteLine (obj.ToString ());
 		}
 	}
 }

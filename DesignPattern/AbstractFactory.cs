@@ -97,6 +97,10 @@ namespace DesignPattern.AbstractFactory
 	{
 		public class ListFactory : Factory
 		{
+			public ListFactory()
+			{
+			}
+
 			public override Link CreateLink(string caption, string url)
 			{
 				return new ListLink (caption, url);
@@ -122,7 +126,7 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml ()
 			{
-				return @"<li><a href="""" + url + @"""">" + caption + "</a></li>";
+				return @"<li><a href="" " + url + @""" >" + caption + "</a></li>";
 			}
 		}
 
