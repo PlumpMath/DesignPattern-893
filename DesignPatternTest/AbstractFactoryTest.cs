@@ -8,10 +8,11 @@ namespace DesignPatternTest
 	[TestFixture]
 	public class AbstractFactoryTest
 	{
-		[TestCase]
-		public void UseListFactoryTest ()
+		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.ListFactory")]
+		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.TableFactory")]
+		public void UseListFactoryTest (string targetClass)
 		{
-			Factory factory = Factory.GetFactory ("DesignPattern.AbstractFactory.ConcreteFactory.ListFactory");
+			Factory factory = Factory.GetFactory (targetClass);
 			Assert.That (factory, Is.Not.Null);
 
 			Link asahi = factory.CreateLink("AsahiShinbun", @"http://www.asahi.com/");

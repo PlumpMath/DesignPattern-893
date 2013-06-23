@@ -179,6 +179,29 @@ namespace DesignPattern.AbstractFactory
 				return buffer.ToString ();
 			}
 		}
+
+		public class TableFactory : Factory
+		{
+			public TableFactory()
+			{
+			}
+
+			public override Link CreateLink(string caption, string url)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override Tray CreateTray(string caption)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override Page CreatePage (string title, string auther)
+			{
+				throw new NotImplementedException ();
+			}
+
+		}
 	}
 }
 
