@@ -188,19 +188,31 @@ namespace DesignPattern.AbstractFactory
 
 			public override Link CreateLink(string caption, string url)
 			{
-				throw new NotImplementedException ();
+				return new TableLink (caption, url);
 			}
 
 			public override Tray CreateTray(string caption)
 			{
-				throw new NotImplementedException ();
+				return new TableTray (caption);
 			}
 
 			public override Page CreatePage (string title, string auther)
 			{
-				throw new NotImplementedException ();
+				return new TableLink (title, auther);
 			}
+		}
 
+		public class TableLink : Link
+		{ 
+			TableLink(string caption, string url)
+				:base(caption, url)
+			{
+			}
+		}
+
+		public class TableTray :Tray
+		{
+			
 		}
 	}
 }
