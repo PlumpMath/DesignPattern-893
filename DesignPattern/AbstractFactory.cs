@@ -259,7 +259,21 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml()
 			{
-				throw new NotImplementedException();
+				var buffer = new StringBuilder ();
+				buffer.Append(@"<html><head><title>" + title + @"</title></head>");
+				buffer.Append (@"<body>");
+				buffer.Append (@"<h1>" + title + @"</h1>");
+				buffer.Append (@"<table width=""80%"" border=""3"" >");
+				foreach (var item in contents) 
+				{
+					buffer.Append(@"<tr>" + item.MakeHtml() + @"</tr>");
+				}
+
+				buffer.Append (@"</table>");
+				buffer.Append (@"<address>" + auther + @"</address>");
+				buffer.Append (@"</body></html>");
+
+				return buffer.ToString ();
 			}
 		}
 	}
