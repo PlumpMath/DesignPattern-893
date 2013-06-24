@@ -95,6 +95,9 @@ namespace DesignPattern.AbstractFactory
 
 	namespace ConcreteFactory
 	{
+		/// <summary>
+		/// List factory.
+		/// </summary>
 		public class ListFactory : Factory
 		{
 			public ListFactory()
@@ -180,6 +183,9 @@ namespace DesignPattern.AbstractFactory
 			}
 		}
 
+		/// <summary>
+		/// Table factory.
+		/// </summary>
 		public class TableFactory : Factory
 		{
 			public TableFactory()
@@ -198,21 +204,47 @@ namespace DesignPattern.AbstractFactory
 
 			public override Page CreatePage (string title, string auther)
 			{
-				return new TableLink (title, auther);
+				return new TablePage (title, auther);
 			}
 		}
 
 		public class TableLink : Link
 		{ 
-			TableLink(string caption, string url)
+			public TableLink(string caption, string url)
 				:base(caption, url)
 			{
+			}
+
+			public override string MakeHtml ()
+			{
+				throw new NotImplementedException ();
 			}
 		}
 
 		public class TableTray :Tray
 		{
-			
+			public TableTray(string caption)
+				:base(caption)
+			{
+			}
+
+			public override string MakeHtml()
+			{
+				throw new NotImplementedException ();
+			}
+		}
+
+		public class TablePage : Page
+		{
+			public TablePage(string title, string auther)
+				: base(title, auther)
+			{
+			}
+
+			public override string MakeHtml()
+			{
+				throw new NotImplementedException();
+			}
 		}
 	}
 }
