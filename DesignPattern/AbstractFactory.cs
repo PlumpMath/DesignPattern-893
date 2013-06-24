@@ -217,9 +217,10 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml ()
 			{
-				throw new NotImplementedException ();
+				var htmlTag = @"<td><a href="" " + url + @""">" + caption + @"</a></td>";
+				return htmlTag;
 			}
-		}
+}
 
 		public class TableTray :Tray
 		{
@@ -230,7 +231,22 @@ namespace DesignPattern.AbstractFactory
 
 			public override string MakeHtml()
 			{
-				throw new NotImplementedException ();
+				var buffer = new StringBuilder ();
+				buffer.Append ("<td>");
+				buffer.Append(@"<table width=""100%"" border=""1""<tr>"); 
+				buffer.Append (@"<td bgcolor=""#cccccc"" align=""center"" colspan="" " +
+				               tray.Count + @"""><b>" + caption + @"</b></td>");
+				buffer.Append(@"</tr>");
+				buffer.Append (@"<tr>");
+				foreach (var item in tray) 
+				{
+					buffer.Append(item.MakeHtml());
+				}
+
+				buffer.Append (@"</tr></table>");
+				buffer.Append(@"</td>");
+
+				return buffer.ToString ();
 			}
 		}
 
