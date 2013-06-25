@@ -8,9 +8,9 @@ namespace DesignPatternTest
 	[TestFixture]
 	public class AbstractFactoryTest
 	{
-		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.ListFactory")]
-		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.TableFactory")]
-		public void UseListFactoryTest (string targetClass)
+		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.ListFactory", "LinkListPage")]
+		[TestCase("DesignPattern.AbstractFactory.ConcreteFactory.TableFactory", "LinkTablePage")]
+		public void UseListFactoryTest (string targetClass, string filename)
 		{
 			Factory factory = Factory.GetFactory (targetClass);
 			Assert.That (factory, Is.Not.Null);
@@ -35,7 +35,7 @@ namespace DesignPatternTest
 			searchTray.Add (excite);
 			searchTray.Add (google);
 
-			Page page = factory.CreatePage ("Link Page", "HiDARi");
+			Page page = factory.CreatePage (filename, "HiDARi");
 			page.Add (newsTray);
 			page.Add (searchTray);
 			page.Output ();
